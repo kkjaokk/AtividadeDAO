@@ -10,7 +10,7 @@ import model.entities.Post;
 import model.entities.User;
 
 public class Main {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ModelException {
 		
 		User emerson = new User(6);
 		
@@ -19,6 +19,8 @@ public class Main {
 		emerson.setSex('M');
 
 		UserDAO dao = (UserDAO) DAOFactory.getDAO(UserDAO.class);
+		
+		dao.save(emerson);
 		
 		User user = null;
 		
@@ -44,6 +46,8 @@ public class Main {
 		post1.setUser_id(emerson);
 		
 		PostDAO postDAO = (PostDAO) DAOFactory.getDAO(PostDAO.class);
+		
+		postDAO.save(post1);
 
 		Post post = null;
 
